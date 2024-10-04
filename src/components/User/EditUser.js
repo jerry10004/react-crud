@@ -11,10 +11,6 @@ const EditUser = () => {
   const navigate = useNavigate();
   const getUserApi = "https://66fa0d90afc569e13a9a42b4.mockapi.io/sample/user";
 
-  useEffect(() => {
-    getUser();
-  }, [getUser]);
-
   const getUser = () => {
     axios
       .get(getUserApi.concat("/") + id)
@@ -22,9 +18,14 @@ const EditUser = () => {
         setUser(item.data);
       })
       .catch((err) => {
+        alert(err);
         console.log(err);
       });
   };
+
+  useEffect(() => {
+    getUser();
+  }, [getUser]);
 
   const handelInput = (e) => {
     e.preventDefault();
